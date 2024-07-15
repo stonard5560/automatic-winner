@@ -1,0 +1,753 @@
+#:kivy 2.3.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Gradient kivy_gradient.Gradient
+            
+<WelcomeScreen>:
+    
+    MDFloatLayout:
+        md_bg_color: 1,1,1,1 
+
+        Image:
+            source: "images/3.png"
+            pos_hint: {'center_x': .1, 'center_y': .94}
+            size_hint: .3,.3
+        
+        Video:
+            source: 'videos/logo_animation.mp4'
+            state: 'play'
+            options: {'eos': 'loop'}
+            pos_hint: {'center_x': .5, 'center_y': .7}
+            size_hint: .5,.5
+            #allow_stretch: True
+            # Hide the play controls
+            #controls: False
+        
+        MDLabel:
+            text: 'The University'
+            #font_name: 'BPoppins'
+            bold: True
+            font_size: 30
+            halign: 'center'
+            pos_hint: {'center_y': .5}
+        MDLabel:
+            markup: True
+            text: 'All your past questions in one app'
+            #font_name: 'BPoppins'
+            color: 0.5,0.5,0.5,1
+            font_size: 19
+            pos_hint: {'center_y': .44}
+            halign: 'center'
+
+
+
+        MDRaisedButton:
+            text: 'Login'
+            font_size: 25
+            pos_hint: {'center_x':.5, 'center_y':.32}
+            size_hint: .8,.09
+            elevation: 0
+            bold: True
+            text_color: 1,1,1,1
+            text_theme_color: 'Custom'
+            on_release: 
+                app.root.current = 'login_screen'
+                app.root.transition.direction = 'left'
+        MDRectangleFlatButton:
+            text: 'Sign Up'
+            text_color: 0,1,0,1
+            font_size: 25
+            bold: True
+            size_hint: .8,.09
+            pos_hint: {'center_x':.5, 'center_y':.2}
+            on_release: app.root.current = 'signup_screen'
+<LoginScreen>:
+    
+    md_bg_color: 1,1,1,1
+    MDFloatLayout:
+         
+        MDIconButton:
+            icon: 'arrow-left'
+            text_color: 0,1,0,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_y': .95}
+            on_release:
+                app.root.current = 'welcome_screen'
+                app.root.transition.direction = 'right'
+        
+        MDLabel:
+            text: 'W E L C O M E !'
+            bold: True
+            color: 0,1,0,1
+            pos_hint: {'center_x': .7, 'center_y': .87}
+            font_size: 30
+        MDLabel:
+            markup: True
+            text: 'Sign in to continue'
+            #color: 1,1,1,.6
+            pos_hint: {'center_x': .74, 'center_y': .81}
+            font_size: 20
+
+        MDTextField:
+            hint_text: 'E-mail'
+            icon_right: 'account'
+            pos_hint: {'center_x': .5, 'center_y': .63}
+            size_hint: .7,.15
+            required: True
+        MDTextField:
+            hint_text: 'Password'
+            icon_right: 'account'
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            size_hint: .7,.15
+            password: True
+            required: True
+            icon_right: 'eye-off'
+        MDTextButton:
+            text: 'Forget Password?'
+            font_size: 19
+            pos_hint: {'center_x':.63, 'center_y':.43}
+            #theme_text_color: 'Custom'
+            #text_color: .3,.3,1,1
+            size_hint: .5,.01
+            #font_name: 'Roboto-BoldItalic'
+            #on_release: app.root.current = 'courses_screen'
+
+        MDRaisedButton:
+            text: 'Login'
+            font_size: 25
+            pos_hint: {'center_x':.5, 'center_y':.33}
+            size_hint: .7,.09
+            elevation: 0
+            bold: True
+            text_color: 1,1,1,1
+            text_theme_color: 'Custom'
+            on_release: 
+                app.root.current = 'home_screen'
+                app.root.transition.direction = 'left'
+        MDLabel: 
+            text: 'or'
+            pos_hint: {'center_y':.22}
+            halign: 'center'
+        MDFloatLayout:
+            md_bg_color: 0,0,0,1
+            pos_hint: {'center_x':.3,'center_y':.22}
+            size_hint: .3,.005
+        MDFloatLayout:
+            md_bg_color: 0,0,0,1
+            pos_hint: {'center_x':.7,'center_y':.22}
+            size_hint: .3,.005
+        MDLabel:
+            text: "Don`t have an account?"
+            pos_hint: {'center_x':.6,'center_y':.17}
+            font_size: 18
+            color: 0,0,0,.5
+        MDTextButton:
+            text: 'Sign Up'
+            pos_hint: {'center_x':.75,'center_y':.17}
+            color: 0,1,0,1
+            on_release: app.root.current = 'signup_screen'
+        MDIconButton:
+            icon: 'facebook'
+            text_color: 0,0,1,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_x':.2,'center_y':.1}
+            #size_hint: .3, .3
+        MDIconButton:
+            icon: 'instagram'
+            text_color: 0,0,0,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_x':.39,'center_y':.1}
+            #size_hint: .3, .3
+        
+        MDIconButton:
+            icon: 'whatsapp'
+            text_color: 0,1,0,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_x':.59,'center_y':.1}
+            #size_hint: .3, .3
+        MDIconButton:
+            icon: 'twitter'
+            text_color: 0,0,0,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_x':.8,'center_y':.1}
+            #size_hint: .6, .6
+            
+<SignupScreen>:
+    
+    md_bg_color: 1,1,1,1
+    MDFloatLayout:
+         
+        MDIconButton:
+            icon: 'arrow-left'
+            text_color: 0,1,0,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_y': .95}
+            on_release:
+                app.root.current = 'welcome_screen'
+                app.root.transition.direction = 'right'
+        
+        MDLabel:
+            text: 'H E L L O !'
+            bold: True
+            color: 0,1,0,1
+            pos_hint: { 'center_y': .87}
+            font_size: 30
+            halign: 'center'
+        MDLabel:
+            markup: True
+            text: 'Sign up to continue'
+            color:0,0,0,.6
+            pos_hint: {'center_y': .81}
+            font_size: 20
+            halign: 'center'
+        MDTextField:
+            hint_text: 'Username'
+            icon_right: 'account'
+            pos_hint: {'center_x': .5, 'center_y': .7}
+            size_hint: .7,None
+            required: True
+
+        MDTextField:
+            hint_text: 'E-mail'
+            icon_right: 'account'
+            pos_hint: {'center_x': .5, 'center_y': .57}
+            size_hint: .7,None
+            required: True
+        MDTextField:
+            hint_text: 'Password'
+            icon_right: 'account'
+            pos_hint: {'center_x': .5, 'center_y': .44}
+            size_hint: .7,None
+            password: True
+            required: True
+            icon_right: 'eye-off'
+        MDTextButton:
+            text: 'Forget Password?'
+            font_size: 19
+            pos_hint: {'center_x':.63, 'center_y':.35}
+            #theme_text_color: 'Custom'
+            #text_color: .3,.3,1,1
+            size_hint: .5,.01
+            #font_name: 'Roboto-BoldItalic'
+            #on_release: app.root.current = 'courses_screen'
+
+        MDRaisedButton:
+            text: 'Sign Up'
+            font_size: 25
+            pos_hint: {'center_x':.5, 'center_y':.27}
+            size_hint: .7,.09
+            elevation: 0
+            bold: True
+            text_color: 1,1,1,1
+            text_theme_color: 'Custom'
+            on_release: 
+                app.root.current = 'home_screen'
+                app.root.transition.direction = 'left'
+        MDLabel: 
+            text: 'or'
+            pos_hint: {'center_y':.17}
+            halign: 'center'
+        MDFloatLayout:
+            md_bg_color: 0,0,0,1
+            pos_hint: {'center_x':.3,'center_y':.17}
+            size_hint: .3,.005
+        MDFloatLayout:
+            md_bg_color: 0,0,0,1
+            pos_hint: {'center_x':.7,'center_y':.17}
+            size_hint: .3,.005
+        MDLabel:
+            text: "Already have an account?"
+            pos_hint: {'center_x':.6,'center_y':.1}
+            font_size: 18
+            color: 0,0,0,.5
+        MDTextButton:
+            text: 'Login'
+            pos_hint: {'center_x':.79,'center_y':.1}
+            color: 0,1,0,1
+            on_release: app.root.current = 'login_screen'
+        MDIconButton:
+            icon: 'facebook'
+            text_color: 0,0,1,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_x':.2,'center_y':.04}
+            #size_hint: .3, .3
+        MDIconButton:
+            icon: 'instagram'
+            text_color: 0,0,0,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_x':.39,'center_y':.04}
+            #size_hint: .3, .3
+        
+        MDIconButton:
+            icon: 'whatsapp'
+            text_color: 0,1,0,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_x':.59,'center_y':.04}
+            #size_hint: .3, .3
+        MDIconButton:
+            icon: 'twitter'
+            text_color: 0,0,0,1
+            theme_text_color: 'Custom'
+            pos_hint: {'center_x':.8,'center_y':.04}
+            #size_hint: .6, .6
+        Widget:
+            size_hint_y: None
+            height: 20
+
+
+<HomeScreen>:
+    
+    
+    BoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "[b]Courses[/b]     "
+            elevation: 0
+            markup: True
+            specific_text_color: 1,1,1,.9999999
+            #theme_text_color: 'Custom'
+            left_action_items: [['menu', lambda x: nav_drawer.set_state('toggle')]]
+            #right_action_items: [["dots-vertical", lambda x: app.dot_callback()]]
+            text_color: 1,1,1,1
+        
+
+        BoxLayout:
+            orientation:'vertical'        
+            ScrollView:
+                
+                MDList:
+                    #md_bg_color:22/225, 0, 66/225,.4
+                    
+                    pos_hint: {'center_y': .77}
+                    OneLineIconListItem:
+                        text: 'Trends in Education'
+                        #divider_color: 1,1,1,1
+                        #text_color: 1,1,1,1
+                        theme_text_color: 'Custom'
+                        on_release: 
+                            app.root.current = 'questions_screen'
+                            app.root.transition.direction = 'left'
+                        IconLeftWidget:
+                            icon: 'book'
+                            text_color: 0,0,0,1
+                            theme_text_color: 'Custom'
+                            #icon: 'chevron-right'
+                        # 
+                    OneLineIconListItem:
+                        text: 'Psychology'
+                        #divider_color: 1,1,1,1
+                        #text_color: 1,1,1,1
+                        theme_text_color: 'Custom'
+                        on_release: 
+                            app.root.current = 'question'
+                            app.root.transition.direction = 'left'
+                        IconLeftWidget:
+                            icon: 'book'
+                            text_color: 0,0,0,1
+                            theme_text_color: 'Custom'
+            FloatLayout:
+                orientation: 'vertical'
+                MDLabel:
+                    text: 'Stonard.lnc'
+                    font_size: 15
+                    pos_hint: {'center_x': .9, 'center_y': .1}
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        md_bg_color: 1,1,1,1
+        size_hint_x: .8
+        #width: 300
+        ScrollView:
+            #BoxLayout:
+             #   canvas:
+              #      Color:
+               #         rgba: 0,0,0 ,1
+                #    Rectangle:
+                 #       pos: self.x - 26, self.top - 140
+                  #      size: 310,self.height/1.2
+                #Video:
+                    #source: 'videos/THE UNIVERSITY.mp4'
+                    #state: 'play'
+                    #options: {'eos': 'loop'}
+                    #pos_hint: {'center_x':0, 'center_y': .72}
+                    #size_hint_y: None
+                    #height: 160
+                    #size_hint_x: None
+                    #width: 250
+                
+            
+  
+                                  
+            MDList:
+                #md_bg_color:22/225, 0, 66/225,.4                       
+                #pos_hint: {'center_y': .9}
+                OneLineIconListItem:
+                    text: 'Profile'
+                    theme_text_color: 'Custom'
+                    #on_release: app.root.current = 'questions_screen'
+                    IconLeftWidget:
+                        icon: 'account'
+                        text_color: 0,0,0,1
+                        theme_text_color: 'Custom'
+                        #icon: 'chevron-right'
+                    
+                OneLineIconListItem:
+                    text: 'Favorite'
+                    divider_color: 1,1,1,1
+                    #text_color: 1,1,1,1
+                    theme_text_color: 'Custom'
+                    IconLeftWidget:
+                        icon: 'star'
+                        text_color: 0,0,0,1
+                        theme_text_color: 'Custom'
+                OneLineIconListItem:
+                    text: 'Result'
+                    #divider_color: 0,1,0,1
+                    #text_color: 1,1,1,1
+                    theme_text_color: 'Custom'
+                    IconLeftWidget:
+                        icon: 'book'
+                        text_color: 0,0,0,1
+                        theme_text_color: 'Custom'
+                OneLineIconListItem:
+                    text: 'LogOut'
+                    divider_color: 1,1,1,1
+                    #text_color: 1,1,1,1
+                    theme_text_color: 'Custom'
+                    IconLeftWidget:
+                        icon: 'logout'
+                        text_color: 0,0,0,1
+                        theme_text_color: 'Custom'
+
+            #Widget:
+               # size_hint_y: None
+              #  height: 150
+        
+
+            
+        
+        
+
+            
+
+
+
+
+    
+            
+<TrendsScreen>:
+    
+    MDBoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            pos_hint: { 'center_y':1}
+            size_hint: 1, .15
+            #size: 400, 400
+            canvas:
+                Color:
+                    rgba: 15/255,228/255,133/255 ,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [0,0,20,20]
+            MDIconButton:
+                icon: 'arrow-left'
+                text_color: 1,1,1,1
+                theme_text_color: 'Custom'
+                pos_hint: {'center_y': .5}
+                on_release:
+                    app.root.current = 'home_screen'
+                    app.root.transition.direction = 'right'
+            MDLabel:
+                text: 'Trends in Education'
+                pos_hint: {'center_x': .7, 'center_y': .5}
+                font_size: 25
+                text_color: 1,1,1,1.
+                font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                bold: True
+                theme_text_color: 'Custom'
+        Label:
+            size_hint_y: None
+            height: 10
+        
+        Label:
+            id: question_number
+            text:'1'
+            size_hint_y: None
+            size_hint_x: None
+            font_name: 'fonts/PTSerif-Regular.ttf'
+            spacing:0,10,0,0
+            pos_hint: {'center_x': .1}
+            font_size: 25
+            color: 0,0,0,1
+            bold: True
+            theme_text_color: 'Custom'
+            height: 40
+            width: 40
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1  # Set your desired RGB color values
+                Line:
+                    rounded_rectangle: (self.x,self.y, self.width, self.height,20)
+                    width: .8
+        ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 20
+                spacing: 10
+                MDLabel:
+                    text: root.question_text
+                    font_size: 17
+                    font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                    adaptive_height: True
+                    padding: 10
+                    halign: 'left'
+                    color: 0,0,0,1
+                    canvas.before:
+                        Color:
+                            rgba: 0,1,0,1  # Set your desired RGB color values
+                        Line:
+                            rounded_rectangle: (self.x,self.y, self.width, self.height,20)
+                            width: .5
+
+                GridLayout:
+                    cols: 1
+                    spacing: 10
+                    padding: 0,28,0,0
+                    font_size: 15
+                    
+                    Button:
+                        id: a_btn
+                        text: root.answer_a_text
+                        on_release: root.check_answer("a")
+                        font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                        color: 0,0,0,1
+                        valign:'middle'
+                        background_color: .9,.9,1,1
+                        background_normal: ''
+                        text_size: self.width-8,self.height-5
+                        padding: 9,0,5,0
+                    Button:
+                        id: b_btn
+                        text: root.answer_b_text
+                        on_release: root.check_answer("b")
+                        font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                        color: 0,0,0,1
+                        valign:'middle'
+                        background_color: .9,.9,1,1
+                        background_normal: ''
+                        text_size: self.width-8,self.height-5
+                        padding: 9,0,5,0
+                    
+                    Button:
+                        id: c_btn
+                        text: root.answer_c_text
+                        on_release: root.check_answer("c")
+                        font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                        color: 0,0,0,1
+                        valign:'middle'
+                        background_color: .9,.9,1,1
+                        background_normal: ''
+                        text_size: self.width,self.height
+                        padding: 9,0,5,0
+                    Button:
+                        id: d_btn
+                        text: root.answer_d_text
+                        on_release: root.check_answer("d")
+                        font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                        color: 0,0,0,1
+                        valign:'middle'
+                        background_color: .9,.9,1,1
+                        background_normal: ''
+                        text_size: self.width-8,self.height-5
+                        padding: 9,0,5,0
+                    GridLayout:
+                        cols: 2
+                        spacing: 20 
+                        padding: 14,12,0,0  
+                                       
+                        MDRectangleFlatButton:
+                            id: back_button 
+                            text: "Back"
+                            on_release: root.previous_question()
+                            disabled: False  # Disable button if no answer selected
+                            text_color: 0,1,0,1
+                            elevation: 0
+                            size_hint: .15,None
+                            font_style: 'Button'
+                            size_hint_min: 10,20
+                        MDRaisedButton:
+                            text: "Next"
+                            on_release: root.next_question()
+                            text_color: 1,1,1,1
+                            bold:True
+                            elevation: 0
+                            size_hint: .15,None
+                            font_style: 'Button'
+                            size_hint_min: 10,20
+                        
+
+                        
+                    
+                                    
+                    
+
+
+
+<PsychologyScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            pos_hint: { 'center_y':1}
+            size_hint: 1, .15
+            #size: 400, 400
+            canvas:
+                Color:
+                    rgba: 15/255,228/255,133/255 ,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [0,0,20,20]
+            MDIconButton:
+                icon: 'arrow-left'
+                text_color: 1,1,1,1
+                theme_text_color: 'Custom'
+                pos_hint: {'center_y': .5}
+                on_release:
+                    app.root.current = 'home_screen'
+                    app.root.transition.direction = 'right'
+            MDLabel:
+                text: 'Psychology'
+                pos_hint: {'center_x': .7, 'center_y': .5}
+                font_size: 25
+                text_color: 1,1,1,1.
+                font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                bold: True
+                theme_text_color: 'Custom'
+        Label:
+            size_hint_y: None
+            height: 10
+        Label:
+            id: question_number
+            text:'1'
+            size_hint_y: None
+            size_hint_x: None
+            font_name: 'fonts/PTSerif-Regular.ttf'
+            spacing:0,10,0,0
+            pos_hint: {'center_x': .1}
+            font_size: 25
+            color: 0,0,0,1
+            bold: True
+            theme_text_color: 'Custom'
+            height: 40
+            width: 40
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1  # Set your desired RGB color values
+                Line:
+                    rounded_rectangle: (self.x,self.y, self.width, self.height,20)
+                    width: .8
+        ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 20
+                spacing: 10
+                MDLabel:
+                    text: root.question_text
+                    font_size: 17
+                    font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                    adaptive_height: True
+                    padding: 10
+                    halign: 'left'
+                    color: 0,0,0,1
+                    canvas.before:
+                        Color:
+                            rgba: 0,1,0,1  # Set your desired RGB color values
+                        Line:
+                            rounded_rectangle: (self.x,self.y, self.width, self.height,20)
+                            width: .5
+
+                GridLayout:
+                    cols: 1
+                    spacing: 10
+                    padding: 0,28,0,0
+                    font_size: 15
+                    
+                    Button:
+                        id: a_btn
+                        text: root.answer_a_text
+                        on_release: root.check_answer("a")
+                        font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                        color: 0,0,0,1
+                        valign:'middle'
+                        background_color: .9,.9,1,1
+                        background_normal: ''
+                        text_size: self.width-8,self.height-5
+                        padding: 9,0,5,0
+                    Button:
+                        id: b_btn
+                        text: root.answer_b_text
+                        on_release: root.check_answer("b")
+                        font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                        color: 0,0,0,1
+                        valign:'middle'
+                        background_color: .9,.9,1,1
+                        background_normal: ''
+                        text_size: self.width-8,self.height-5
+                        padding: 9,0,5,0
+                    
+                    Button:
+                        id: c_btn
+                        text: root.answer_c_text
+                        on_release: root.check_answer("c")
+                        font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                        color: 0,0,0,1
+                        valign:'middle'
+                        background_color: .9,.9,1,1
+                        background_normal: ''
+                        text_size: self.width,self.height
+                        padding: 9,0,5,0
+                    Button:
+                        id: d_btn
+                        text: root.answer_d_text
+                        on_release: root.check_answer("d")
+                        font_name: 'fonts/helvetica-neue-5/HelveticaNeueRoman.otf'
+                        color: 0,0,0,1
+                        valign:'middle'
+                        background_color: .9,.9,1,1
+                        background_normal: ''
+                        text_size: self.width-8,self.height-5
+                        padding: 9,0,5,0
+                    GridLayout:
+                        cols: 2
+                        spacing: 20 
+                        padding: 14,12,0,0  
+                                       
+                        MDRectangleFlatButton:
+                            id: back_button 
+                            text: "Back"
+                            on_release: root.previous_question()
+                            disabled: False  # Disable button if no answer selected
+                            text_color: 0,1,0,1
+                            elevation: 0
+                            size_hint: .15,None
+                            font_style: 'Button'
+                            size_hint_min: 10,20
+                        MDRaisedButton:
+                            text: "Next"
+                            on_release: root.next_question()
+                            text_color: 1,1,1,1
+                            bold:True
+                            elevation: 0
+                            size_hint: .15,None
+                            font_style: 'Button'
+                            size_hint_min: 10,20
+                        
+
+                        
+                    
+                                    
+                    
+
+
+
+<ResultScreen>:
